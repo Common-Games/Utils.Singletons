@@ -1,0 +1,27 @@
+{
+  "name": "com.common-games.utilities.singletons",
+  "displayName": "Utilities.Singletons",
+  "version": "0.0.0",
+  "unity": "2020.2",
+  "description": "Set of easy to use explicit singletons.",
+  "keywords": [
+    "unity",
+    "unity3d",
+    "upm",
+    "Common-Games",
+    "utility"
+  ],
+  "homepage": "https://github.com/Common-Games/Utilities.Singletons.git",
+  "bugs": {
+    "url": "https://github.com/Common-Games/Utilities.Singletons/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Common-Games/Utilities.Singletons.git"
+  },
+  "license": "MIT",
+  "author": "Common-Games (https://github.com/Common-Games)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

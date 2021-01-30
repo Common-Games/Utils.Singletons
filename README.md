@@ -1,11 +1,11 @@
 # CGTerminal
 
-![Version](https://img.shields.io/github/package-json/v/Common-Games/Utilities.CGTerminal?style=for-the-badge)
-![Stars](https://img.shields.io/github/stars/Common-Games/Utilities.CGTerminal?color=orange&style=for-the-badge)
+![Version](https://img.shields.io/github/package-json/v/Walter-Hulsebos/Utilities.Singletons?style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/Walter-Hulsebos/Utilities.Singletons?color=orange&style=for-the-badge)
 [![Discord](https://img.shields.io/discord/763171539763462144?color=%237289DA&label=discord&logo=discord&style=for-the-badge)](https://discord.gg/S9wHQ96)
 [![Build](https://img.shields.io/badge/build-passing-brightgreen.svg?style=for-the-badge)]()
 
-An easy system for creating in-game commands for Unity.
+Set of easy to use, explicit Singletons.
 <br>Part of the **CGTK** Framework for Unity.
 
 <!-- toc -->
@@ -48,7 +48,7 @@ Thank you!
 1. Click on **Window/Package Manager**.
 2. Click on the little + icon.
 3. Click on button that says **Add Package from git URL**.
-4. Put in `https://github.com/Common-Games/Utilities.CGTerminal.git`
+4. Put in `https://github.com/Walter-Hulsebos/Utilities.Singletons.git`
 
 And you're done! ;-)
 
@@ -68,7 +68,7 @@ The documentation is separated into these parts;
 
 ## Overview API
 
-*Workd In Progress*
+*Work In Progress*
 
 # License
 

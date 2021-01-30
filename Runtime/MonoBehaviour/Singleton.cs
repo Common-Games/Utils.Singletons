@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 
-namespace CommonGames.Utilities.Singletons
+namespace CGTK.Utilities.Singletons
 {
 	
 	#if ODIN_INSPECTOR

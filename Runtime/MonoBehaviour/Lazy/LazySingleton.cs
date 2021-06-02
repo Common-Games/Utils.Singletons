@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 using JetBrains.Annotations;
 
@@ -13,11 +12,12 @@ namespace CGTK.Utilities.Singletons
 	#endif
 
 	/// <summary> Lazy Singleton for <see cref="MonoBehaviour"/>s</summary>
-	/// <typeparam name="T"> Type of the Singleton. </typeparam>
+	/// <remarks> Do NOT create one inside of the inspector, it will not recognize them! For that, use the EnsuredSingletons.</remarks>
+	/// <typeparam name="T"> Type of the Singleton. CRTP (the inheritor)</typeparam>
 	public abstract class LazySingleton<T> : MonoBehaviour
 		where T : LazySingleton<T>
 	{
-		private static readonly Lazy<T> LazyInstance = new Lazy<T>(CreateSingleton);
+		private static readonly Lazy<T> LazyInstance = new(CreateSingleton);
 
 		[PublicAPI]
 		public static T Instance => LazyInstance.Value;
@@ -26,9 +26,9 @@ namespace CGTK.Utilities.Singletons
 		public bool InstanceExists => LazyInstance.IsValueCreated;
 
 		[UsedImplicitly]
-		public static T CreateSingleton()
+		private static T CreateSingleton()
 		{
-			GameObject __ownerObject = new GameObject(name: $"[{typeof(T).Name}]");
+			UnityEngine.GameObject __ownerObject = new(name: $"[{typeof(T).Name}]");
 			T __instance = __ownerObject.AddComponent<T>();
 
 			return __instance;

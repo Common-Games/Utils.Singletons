@@ -10,9 +10,10 @@ namespace CGTK.Utilities.Singletons
     #endif
     
     /// <summary> Singleton for <see cref="MonoBehaviour"/>s - that persists across scenes. </summary>
-    /// <typeparam name="T"> Type of the Singleton. </typeparam>
-    public abstract class PersistentSingleton<T> : Singleton<T> 
-        where T : PersistentSingleton<T>
+    /// <typeparam name="T"> Type of the Singleton. CRTP (the inheritor)</typeparam>
+    //[RequireComponent(requiredComponent: typeof(DontDestroyOnLoad))]
+    public abstract class SingletonPersistent<T> : Singleton<T> 
+        where T : SingletonPersistent<T>
     {
         protected override void Awake()
         {

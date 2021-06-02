@@ -1,6 +1,6 @@
 {
   "name": "com.common-games.utilities.singletons",
-  "displayName": "Utilities.Singletons",
+  "displayName": "CGTK.Utilities.Singletons",
   "version": "0.0.0",
   "unity": "2020.2",
   "description": "Set of easy to use explicit singletons.",

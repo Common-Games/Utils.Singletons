@@ -18,7 +18,7 @@ namespace CGTK.Utilities.Singletons
 	{
 		#region Properties
 		
-		private static T _internalInstance = null;
+		private static T _internalInstance;
 
 		/// <summary> The static reference to the Instance </summary>
 		[PublicAPI]
@@ -48,20 +48,9 @@ namespace CGTK.Utilities.Singletons
 
 		#region Methods
 
-		protected void Reset() => RegisterSelf();
-
-		protected virtual void Awake() => RegisterSelf();
-
-		protected void RegisterSelf()
-		{
-			if(InstanceExists && (Instance != this)) //Prefer using already existing Singletons.
-			{
-				Destroy(obj: this);
-				return;
-			}
-			
-			Instance = this as T;
-		}
+		protected void Reset() => Register();
+		protected virtual void Awake() => Register();
+		protected virtual void OnEnable() => Register();
 
 		/// <summary> OnDisable method to clear Singleton association </summary>
 		protected virtual void OnDisable()
@@ -79,6 +68,17 @@ namespace CGTK.Utilities.Singletons
 			T __instance = __ownerObject.AddComponent<T>();
 
 			return __instance;
+		}
+		
+		private void Register()
+		{
+			if(InstanceExists && (Instance != this)) //Prefer using already existing Singletons.
+			{
+				Destroy(obj: this);
+				return;
+			}
+			
+			Instance = this as T;
 		}
 		
 		#endregion

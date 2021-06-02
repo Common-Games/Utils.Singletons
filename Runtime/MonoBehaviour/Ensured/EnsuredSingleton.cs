@@ -48,19 +48,12 @@ namespace CGTK.Utilities.Singletons
 
 		#region Methods
 
-		protected void Reset() => Register();
+		protected virtual void Reset() => Register();
 		protected virtual void Awake() => Register();
 		protected virtual void OnEnable() => Register();
-
-		/// <summary> OnDisable method to clear Singleton association </summary>
-		protected virtual void OnDisable()
-		{
-			if (Instance == this)
-			{
-				Instance = null;
-			}
-		}
 		
+		protected virtual void OnDisable() => Unregister();
+
 		[UsedImplicitly]
 		private static T CreateSingleton()
 		{
@@ -70,15 +63,37 @@ namespace CGTK.Utilities.Singletons
 			return __instance;
 		}
 		
+		/// <summary> Associate Singleton with new instance. </summary>
 		private void Register()
 		{
 			if(InstanceExists && (Instance != this)) //Prefer using already existing Singletons.
 			{
+				#if UNITY_EDITOR
+				if (!UnityEngine.Application.isPlaying)
+				{
+					DestroyImmediate(obj: this);
+				}
+				else
+				{
+					Destroy(obj: this);
+				}
+				#else
 				Destroy(obj: this);
+				#endif
+				
 				return;
 			}
 			
 			Instance = this as T;
+		}
+		
+		/// <summary> Clear Singleton association </summary>
+		private void Unregister()
+		{
+			if (Instance == this)
+			{
+				Instance = null;
+			}
 		}
 		
 		#endregion

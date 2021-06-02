@@ -22,7 +22,13 @@ namespace CGTK.Utilities.Singletons
 		[PublicAPI]
 		public static T Instance
 		{
-			get => _internalInstance ??= FindObjectOfType<T>();
+			//get => _internalInstance ??= FindObjectOfType<T>();
+			get
+			{
+				if (InstanceExists) return _internalInstance;
+
+				return _internalInstance = FindObjectOfType<T>();
+			}
 			protected set => _internalInstance = value;
 		}
 
@@ -34,10 +40,11 @@ namespace CGTK.Utilities.Singletons
 
 		#region Methods
 
-		/// <summary> OnEnable method to associate Singleton with Instance </summary>
-		protected virtual void OnEnable()
+		///// <summary> OnEnable method to associate Singleton with Instance </summary>
+		//protected virtual void OnEnable()
+		protected virtual void Awake()
 		{
-			if (InstanceExists && Instance != this)
+			if (InstanceExists && (Instance != this))
 			{
 				Destroy(Instance);
 			}

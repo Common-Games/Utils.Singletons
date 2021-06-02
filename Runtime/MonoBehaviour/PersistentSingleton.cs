@@ -14,9 +14,9 @@ namespace CGTK.Utilities.Singletons
     public abstract class PersistentSingleton<T> : Singleton<T> 
         where T : PersistentSingleton<T>
     {
-        protected override void OnEnable()
+        protected override void Awake()
         {
-            base.OnEnable();
+            base.Awake();
 
             if(Application.isPlaying)
             {

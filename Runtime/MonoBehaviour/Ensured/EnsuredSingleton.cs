@@ -1,5 +1,4 @@
 using JetBrains.Annotations;
-using UnityEngine;
 
 namespace CGTK.Utilities.Singletons
 {
@@ -9,15 +8,16 @@ namespace CGTK.Utilities.Singletons
 	#else
 	using MonoBehaviour = UnityEngine.MonoBehaviour;
 	#endif
+	
+	//TODO: Check for multiple instances on loading a different scene.
 
 	/// <summary> Singleton for <see cref="MonoBehaviour"/>s - If an instance already exists it will use that, if not it'll create one.</summary>
 	/// <typeparam name="T"> Type of the Singleton. CRTP (the inheritor)</typeparam>
 	public abstract class EnsuredSingleton<T> : MonoBehaviour
 		where T : EnsuredSingleton<T>
 	{
-
-		//private static readonly bool constructInvisible;
-
+		#region Properties
+		
 		private static T _internalInstance = null;
 
 		/// <summary> The static reference to the Instance </summary>
@@ -27,13 +27,13 @@ namespace CGTK.Utilities.Singletons
 			get
 			{
 				if (InstanceExists) return _internalInstance;
-				Debug.Log("Finding Singleton");
+				//Debug.Log("Finding Singleton");
 				_internalInstance = FindObjectOfType<T>();
 
 				if (InstanceExists) return _internalInstance;
 
 				_internalInstance = CreateSingleton();
-				Debug.Log("Creating Singleton");
+				//Debug.Log("Creating Singleton");
 
 				return _internalInstance;
 			}
@@ -44,10 +44,17 @@ namespace CGTK.Utilities.Singletons
 		[PublicAPI]
 		public static bool InstanceExists => (_internalInstance != null);
 		
-		protected virtual void Awake()
+		#endregion
+
+		#region Methods
+
+		protected void Reset() => RegisterSelf();
+
+		protected virtual void Awake() => RegisterSelf();
+
+		protected void RegisterSelf()
 		{
-			//if (InstanceExists && (Instance != this))
-			if(InstanceExists)
+			if(InstanceExists && (Instance != this)) //Prefer using already existing Singletons.
 			{
 				Destroy(obj: this);
 				return;
@@ -73,6 +80,7 @@ namespace CGTK.Utilities.Singletons
 
 			return __instance;
 		}
+		
+		#endregion
 	}
-
 }

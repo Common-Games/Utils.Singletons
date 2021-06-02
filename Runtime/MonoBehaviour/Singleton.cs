@@ -10,19 +10,18 @@ namespace CGTK.Utilities.Singletons
 	#endif
 	
 	/// <summary> Singleton for <see cref="MonoBehaviour"/>s</summary>
-	/// <typeparam name="T"> Type of the Singleton. </typeparam>
+	/// <typeparam name="T"> Type of the Singleton. CRTP (the inheritor)</typeparam>
 	public abstract class Singleton<T> : MonoBehaviour 
 		where T : Singleton<T>
 	{
 		#region Properties
 
-		private static T _internalInstance = null;
+		private static T _internalInstance;
 
 		/// <summary> The static reference to the Instance </summary>
 		[PublicAPI]
 		public static T Instance
 		{
-			//get => _internalInstance ??= FindObjectOfType<T>();
 			get
 			{
 				if (InstanceExists) return _internalInstance;
@@ -40,20 +39,38 @@ namespace CGTK.Utilities.Singletons
 
 		#region Methods
 
-		///// <summary> OnEnable method to associate Singleton with Instance </summary>
-		//protected virtual void OnEnable()
-		protected virtual void Awake()
+		protected virtual void Reset() => Register();
+		protected virtual void Awake() => Register();
+		protected virtual void OnEnable() => Register();
+		
+		protected virtual void OnDisable() => Unregister();
+
+		/// <summary> Associate Singleton with new instance. </summary>
+		private void Register()
 		{
-			if (InstanceExists && (Instance != this))
+			if(InstanceExists && (Instance != this)) //Prefer using already existing Singletons.
 			{
-				Destroy(Instance);
+				#if UNITY_EDITOR
+				if (!UnityEngine.Application.isPlaying)
+				{
+					DestroyImmediate(obj: this);
+				}
+				else
+				{
+					Destroy(obj: this);
+				}
+				#else
+				Destroy(obj: this);
+				#endif
+				
+				return;
 			}
 			
 			Instance = this as T;
 		}
-
-		/// <summary> OnDisable method to clear Singleton association </summary>
-		protected virtual void OnDisable()
+		
+		/// <summary> Clear Singleton association </summary>
+		private void Unregister()
 		{
 			if (Instance == this)
 			{

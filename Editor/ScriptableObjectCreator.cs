@@ -26,29 +26,26 @@ namespace CGTK.Utilities.Singletons
             }
 
             directory = EditorUtility.SaveFilePanel(title: "Save ScriptableObject as...", directory: directory, defaultName: "New " + typeof(T).Name, extension: "asset");
+            
+            //It assumes you're putting it in a subdirectory of Application.dataPath.
+            //But that's the only directory where they make sense, so don't be an idiot.
 
             if (string.IsNullOrEmpty(directory))
             {
                 Debug.LogError(message: "NO DIRECTORY SELECTED");
                 return;
             }
-
-            //Debug.Log("Before <b>" + directory + "</b>");
+            
             directory = directory.Remove(startIndex: 0, count: Application.dataPath.Length - 6); //-6 for "Assets" 
-            //Debug.Log("After <b>" + directory + "</b>");
 
             if (TryCreateInstance(asset: out T __asset))
             {
                 Debug.Log(message: $"Create Instance = {directory}");
                 
                 AssetDatabase.CreateAsset(asset: __asset, path: directory);
-                //AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
-                
                 return;
             }
-            
-            //CREATE It in the Assets folder you absolute dipshit.
             
             Debug.LogError(message: "ScriptableObject Creation FAILED!!");
         }

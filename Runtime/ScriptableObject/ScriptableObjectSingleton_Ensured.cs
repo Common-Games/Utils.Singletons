@@ -19,8 +19,8 @@ namespace CGTK.Utilities.Singletons
 	
 	/// <summary> Singleton for <see cref="ScriptableObject"/>s</summary>
 	/// <typeparam name="T"> Type of the Singleton. CRTP (the inheritor)</typeparam>
-	public abstract class EnsuredScriptableSingleton<T> : ScriptableObject 
-		where T : EnsuredScriptableSingleton<T>
+	public abstract class ScriptableObjectSingleton_Ensured<T> : ScriptableObject 
+		where T : ScriptableObjectSingleton_Ensured<T>
 	{
 		#region Properties
 

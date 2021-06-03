@@ -1,6 +1,6 @@
 {
     "name": "CGTK.Utilities.Singletons.Runtime",
-    "rootNamespace": "",
+    "rootNamespace": "CGTK.Utilities.Singletons",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -7,7 +7,7 @@ namespace CGTK.Utilities.Singletons
 	#else
 	using MonoBehaviour = UnityEngine.MonoBehaviour;
 	#endif
-	
+
 	//TODO: Check for multiple instances on loading a different scene.
 
 	/// <summary> Singleton for <see cref="MonoBehaviour"/>s - If an instance already exists it will use that, if not it'll create one.</summary>
@@ -56,7 +56,7 @@ namespace CGTK.Utilities.Singletons
 		[UsedImplicitly]
 		private static T CreateSingleton()
 		{
-			UnityEngine.GameObject __ownerObject = new(name: $"[{typeof(T).Name}]");
+			UnityEngine.GameObject __ownerObject = new UnityEngine.GameObject(name: $"[{typeof(T).Name}]");
 			T __instance = __ownerObject.AddComponent<T>();
 
 			return __instance;

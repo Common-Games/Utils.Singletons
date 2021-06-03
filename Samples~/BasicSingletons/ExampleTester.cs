@@ -24,7 +24,7 @@ namespace CommonGames.Samples.Singletons.Basic
             if (Example_MonoBehaviourSingleton.InstanceExists)
             {
                 Debug.Log(message: nameof(CheckMonoBehaviourSingleton) + " = " +
-                                   Example_MonoBehaviourSingleton.Instance.Info);   
+                                   Example_MonoBehaviourSingleton.Instance.Info, context: this);   
             }
             else
             {
@@ -40,7 +40,7 @@ namespace CommonGames.Samples.Singletons.Basic
             if (Example_MonoBehaviourSingleton_Persistent.InstanceExists)
             {
                 Debug.Log(message: nameof(CheckMonoBehaviourSingleton_Persistent) + " = " +
-                                   Example_MonoBehaviourSingleton_Persistent.Instance.Info);
+                                   Example_MonoBehaviourSingleton_Persistent.Instance.Info, context: this);
             }
             else
             {
@@ -59,7 +59,7 @@ namespace CommonGames.Samples.Singletons.Basic
         private void CheckMonoBehaviourSingleton_Lazy()
         {
             Debug.Log(message: nameof(CheckMonoBehaviourSingleton_Lazy) + " = " +
-                               Example_MonoBehaviourSingleton_Lazy.Instance.Info);
+                               Example_MonoBehaviourSingleton_Lazy.Instance.Info, context: this);
         }
         #if ODIN_INSPECTOR
         [Button]
@@ -68,7 +68,7 @@ namespace CommonGames.Samples.Singletons.Basic
         private void CheckMonoBehaviourSingletonSingleton_LazyPersistent()
         {
             Debug.Log(message: nameof(CheckMonoBehaviourSingletonSingleton_LazyPersistent) + " = " +
-                               Example_MonoBehaviourSingleton_LazyPersistent.Instance.Info);
+                               Example_MonoBehaviourSingleton_LazyPersistent.Instance.Info, context: this);
         }
 
         #endregion
@@ -82,7 +82,7 @@ namespace CommonGames.Samples.Singletons.Basic
         private void CheckMonoBehaviourSingleton_Ensured()
         {
             Debug.Log(message: nameof(Example_MonoBehaviourSingleton_Ensured) + " = " +
-                               Example_MonoBehaviourSingleton_Ensured.Instance.Info);
+                               Example_MonoBehaviourSingleton_Ensured.Instance.Info, context: this);
         }
         #if ODIN_INSPECTOR
         [Button]
@@ -91,10 +91,45 @@ namespace CommonGames.Samples.Singletons.Basic
         private void CheckMonoBehaviourSingleton_EnsuredPersistent()
         {
             Debug.Log(message: nameof(CheckMonoBehaviourSingleton_EnsuredPersistent) + " = " +
-                               Example_MonoBehaviourSingleton_EnsuredPersistent.Instance.Info);
+                               Example_MonoBehaviourSingleton_EnsuredPersistent.Instance.Info, context: this);
         }
 
         #endregion
+
+        #endregion
+
+        #region ScriptableObject
+
+        #if ODIN_INSPECTOR
+        [Button]
+        #endif
+        [ContextMenu(itemName: nameof(CheckScriptableObjectSingleton))]
+        private void CheckScriptableObjectSingleton()
+        {
+            //Should work in editor, after start, whatever.
+
+            if (Example_MonoBehaviourSingleton.InstanceExists)
+            {
+                Debug.Log(message: nameof(CheckScriptableObjectSingleton) + " = " +
+                                   Example_ScriptableObjectSingleton.Instance.Info, context: this);   
+            }
+            else
+            {
+                Debug.LogWarning(message: "No ScriptableObjectSingleton Instance Exists!");
+            }
+        }
+        
+        #if ODIN_INSPECTOR
+        [Button]
+        #endif
+        [ContextMenu(itemName: nameof(CheckScriptableObjectSingleton))]
+        private void CheckScriptableObjectSingleton_Ensured()
+        {
+            //Should work in editor, after start, whatever.
+            
+            Debug.Log(message: nameof(CheckScriptableObjectSingleton_Ensured) + " = " +
+                               Example_ScriptableObjectSingleton_Ensured.Instance.Info, context: this);
+        }
 
         #endregion
     }

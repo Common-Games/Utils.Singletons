@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 
 namespace CGTK.Utilities.Singletons
 {
-
+	//namespace MonoBehaviour
 	#if ODIN_INSPECTOR
 	using MonoBehaviour = Sirenix.OdinInspector.SerializedMonoBehaviour;
 	#else
@@ -14,16 +14,30 @@ namespace CGTK.Utilities.Singletons
 	/// <summary> Lazy Singleton for <see cref="MonoBehaviour"/>s</summary>
 	/// <remarks> Do NOT create one inside of the inspector, it will not recognize them! For that, use the EnsuredSingletons.</remarks>
 	/// <typeparam name="T"> Type of the Singleton. CRTP (the inheritor)</typeparam>
-	public abstract class LazySingleton<T> : MonoBehaviour
-		where T : LazySingleton<T>
+	public abstract class MonoBehaviourSingleton_Lazy<T> : MonoBehaviour
+		where T : MonoBehaviourSingleton_Lazy<T>
 	{
+		#region Properties
+
 		private static readonly Lazy<T> LazyInstance = new(CreateSingleton);
 
-		[PublicAPI]
-		public static T Instance => LazyInstance.Value;
+		[PublicAPI] public static T Instance => LazyInstance.Value;
 
-		[PublicAPI] 
-		public bool InstanceExists => LazyInstance.IsValueCreated;
+		[PublicAPI] public bool InstanceExists => LazyInstance.IsValueCreated;
+		
+		#endregion
+
+		#region Structors
+		
+		//private constructor
+		protected MonoBehaviourSingleton_Lazy()
+		{
+			
+		}
+
+		#endregion
+		
+		#region Methods
 
 		[UsedImplicitly]
 		private static T CreateSingleton()
@@ -33,5 +47,7 @@ namespace CGTK.Utilities.Singletons
 
 			return __instance;
 		}
+		
+		#endregion
 	}
 }

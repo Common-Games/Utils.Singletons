@@ -1,18 +1,26 @@
+using System.Linq;
+
+using UnityEngine;
+
 using JetBrains.Annotations;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace CGTK.Utilities.Singletons
 {
 	
 	#if ODIN_INSPECTOR
-	using MonoBehaviour = Sirenix.OdinInspector.SerializedMonoBehaviour; 
+	using ScriptableObject = Sirenix.OdinInspector.SerializedScriptableObject; 
 	#else 
-	using MonoBehaviour = UnityEngine.MonoBehaviour;
+	using ScriptableObject = UnityEngine.ScriptableObject;
 	#endif
 	
-	/// <summary> Singleton for <see cref="MonoBehaviour"/>s</summary>
+	/// <summary> Singleton for <see cref="ScriptableObject"/>s</summary>
 	/// <typeparam name="T"> Type of the Singleton. CRTP (the inheritor)</typeparam>
-	public abstract class Singleton<T> : MonoBehaviour 
-		where T : Singleton<T>
+	public abstract class ScriptableObjectSingleton<T> : ScriptableObject 
+		where T : ScriptableObjectSingleton<T>
 	{
 		#region Properties
 
@@ -26,9 +34,30 @@ namespace CGTK.Utilities.Singletons
 			{
 				if (InstanceExists) return _internalInstance;
 
-				return _internalInstance = FindObjectOfType<T>();
+				T[] __found = Resources.FindObjectsOfTypeAll<T>();
+				if (__found.HasElements())
+				{
+					return _internalInstance = __found[0];	
+				}
+
+				return null;
 			}
-			protected set => _internalInstance = value;
+			protected set
+			{
+				_internalInstance = value;	
+				
+				#if UNITY_EDITOR
+				if(_internalInstance == null) return;
+				
+				Object[] __preloadedAssets = PlayerSettings.GetPreloadedAssets();
+
+				if (__preloadedAssets.Contains(_internalInstance)) return;
+
+				__preloadedAssets.Add(_internalInstance);
+
+				PlayerSettings.SetPreloadedAssets(__preloadedAssets);
+				#endif
+			}
 		}
 
 		/// <summary> Whether a Instance of the Singleton exists </summary>
@@ -46,12 +75,13 @@ namespace CGTK.Utilities.Singletons
 		protected virtual void OnDisable() => Unregister();
 
 		/// <summary> Associate Singleton with new instance. </summary>
+		//[RuntimeInitializeOnLoadMethod]
 		private void Register()
 		{
 			if(InstanceExists && (Instance != this)) //Prefer using already existing Singletons.
 			{
 				#if UNITY_EDITOR
-				if (!UnityEngine.Application.isPlaying)
+				if (!EditorApplication.isPlaying)
 				{
 					DestroyImmediate(obj: this);
 				}

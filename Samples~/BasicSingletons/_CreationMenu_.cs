@@ -11,13 +11,13 @@ namespace CommonGames.Samples.Singletons.Basic
 		[UnityEditor.MenuItem(itemName: "Tools/CGTK/Samples/Singletons/Create ScriptableObject Singleton")]
 		private static void CreateScriptableObjectSingleton()
 		{
-			ScriptableObjectCreator.Create<ExampleScriptableObjectSingleton>();
+			ScriptableObjectCreator.Create<Example_ScriptableObjectSingleton>();
 		}
 
-		[UnityEditor.MenuItem(itemName: "Tools/CGTK/Samples/Singletons/Create ScriptableObject SingletonEnsured")]
+		[UnityEditor.MenuItem(itemName: "Tools/CGTK/Samples/Singletons/Create ScriptableObject Singleton Ensured")]
 		private static void CreateScriptableObjectSingletonEnsured()
 		{
-			ScriptableObjectCreator.Create<ExampleEnsuredScriptableObjectSingleton>();
+			ScriptableObjectCreator.Create<Example_ScriptableObjectSingleton_Ensured>();
 		}
 	}
 }

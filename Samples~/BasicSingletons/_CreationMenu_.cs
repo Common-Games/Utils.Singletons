@@ -1,6 +1,6 @@
 using CGTK.Utilities.Singletons;
 
-namespace CommonGames.Examples.Singletons.Basic
+namespace CommonGames.Samples.Singletons.Basic
 {
 	/// <summary>
 	/// You don't need to do this for your own ScriptableObjects, which is why I separated it.

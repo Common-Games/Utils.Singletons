@@ -2,7 +2,6 @@ using JetBrains.Annotations;
 
 namespace CGTK.Utilities.Singletons
 {
-
 	#if ODIN_INSPECTOR
 	using MonoBehaviour = Sirenix.OdinInspector.SerializedMonoBehaviour;
 	#else
@@ -13,8 +12,8 @@ namespace CGTK.Utilities.Singletons
 
 	/// <summary> Singleton for <see cref="MonoBehaviour"/>s - If an instance already exists it will use that, if not it'll create one.</summary>
 	/// <typeparam name="T"> Type of the Singleton. CRTP (the inheritor)</typeparam>
-	public abstract class EnsuredSingleton<T> : MonoBehaviour
-		where T : EnsuredSingleton<T>
+	public abstract class MonoBehaviourSingleton_Ensured<T> : MonoBehaviour
+		where T : MonoBehaviourSingleton_Ensured<T>
 	{
 		#region Properties
 		

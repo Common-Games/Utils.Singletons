@@ -19,7 +19,7 @@ namespace CGTK.Utilities.Singletons
 	{
 		#region Properties
 
-		private static readonly Lazy<T> LazyInstance = new(CreateSingleton);
+		private static readonly Lazy<T> LazyInstance = new Lazy<T>(CreateSingleton);
 
 		[PublicAPI] public static T Instance => LazyInstance.Value;
 
@@ -42,7 +42,7 @@ namespace CGTK.Utilities.Singletons
 		[UsedImplicitly]
 		private static T CreateSingleton()
 		{
-			UnityEngine.GameObject __ownerObject = new(name: $"[{typeof(T).Name}]");
+			UnityEngine.GameObject __ownerObject = new UnityEngine.GameObject(name: $"[{typeof(T).Name}]");
 			T __instance = __ownerObject.AddComponent<T>();
 
 			return __instance;

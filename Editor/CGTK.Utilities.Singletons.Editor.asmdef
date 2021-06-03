@@ -1,0 +1,16 @@
+{
+    "name": "CGTK.Utilities.Singletons.Editor",
+    "rootNamespace": "CGTK.Utilities.Singletons",
+    "references": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

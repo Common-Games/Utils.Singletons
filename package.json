@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "unity": "2020.3",
   "description": "Set of easy to use explicit singletons.",
-  "keywords": [
+  "keywords": 
+  [
     "unity",
     "unity3d",
     "upm",
@@ -12,17 +13,29 @@
     "utility"
   ],
   "homepage": "https://github.com/Common-Games/Utilities.Singletons.git",
-  "bugs": {
+  "bugs": 
+  {
     "url": "https://github.com/Common-Games/Utilities.Singletons/issues"
   },
-  "repository": {
+  "repository": 
+  {
     "type": "git",
     "url": "git+ssh://git@github.com/Common-Games/Utilities.Singletons.git"
   },
   "license": "MIT",
   "author": "Common-Games (https://github.com/Common-Games)",
-  "scripts": {
+  "scripts": 
+  {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "samples": 
+  [
+    {
+      "displayName": "Basic Example Singletons",
+
+      "path": "Samples~/BasicSingletons"
+
+    }
+  ],
   "type": "library"
 }

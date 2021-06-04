@@ -27,15 +27,16 @@
 [![Paypal](https://img.shields.io/badge/sponsor_the_project-donate-E12C9A.svg?style=for-the-badge)](https://paypal.me/walthaynes)
 [![Ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/walterhulsebos)
 
-</div>
 
 Hiya! We're **Common Games**, thanks for checking out **CGTK**!
 <br> 
 When using any of our packages, please make sure to **Star** 🌟 the repositories you're using.
 <br>
-Giving credit to *Walter Hulsebos* somewhere in your app/game would also be greatly appreciated!
+Giving **Credit** to *Walter Hulsebos* somewhere in your app/game would also be greatly appreciated!
 <br> 
-Thank you!
+**Thank you!**
+
+</div>
 
 <div align="center"> <b>Made with 💖 by Walter H.</b> </div>
 

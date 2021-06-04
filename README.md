@@ -1,11 +1,13 @@
 # Utilities.Singletons
 
+<div align="center">
+
 ![Version](https://img.shields.io/github/package-json/v/Walter-Hulsebos/Utilities.Singletons?style=for-the-badge)
 ![Stars](https://img.shields.io/github/stars/Walter-Hulsebos/Utilities.Singletons?color=orange&style=for-the-badge)
 [![Discord](https://img.shields.io/discord/763171539763462144?color=%237289DA&label=discord&logo=discord&style=for-the-badge)](https://discord.gg/S9wHQ96)
 [![Build](https://img.shields.io/badge/build-passing-brightgreen.svg?style=for-the-badge)]()
 
-Set of easy to use, explicit Singletons.
+*Utilities.Singletons, a set of easy to use, explicit Singletons.*
 <br>Part of the **CGTK** Framework for Unity.
 
 <!-- toc -->
@@ -25,6 +27,7 @@ Set of easy to use, explicit Singletons.
 [![Paypal](https://img.shields.io/badge/sponsor_the_project-donate-E12C9A.svg?style=for-the-badge)](https://paypal.me/walthaynes)
 [![Ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/walterhulsebos)
 
+</div>
 
 Hiya! We're **Common Games**, thanks for checking out **CGTK**!
 <br> 
@@ -45,9 +48,9 @@ Thank you!
 
 #####Install the latest *stable release* by following these steps:
 
-1. Click on **Window/Package Manager**.
-2. Click on the little <kbd>+</kbd> icon.
-3. Click on button that says <kbd>Add Package from git URL</kbd>.
+1. Click on **Window/Package Manager**
+2. Click on the little <kbd>+</kbd> icon
+3. Click on button that says <kbd>Add Package from git URL</kbd>
 4. Paste in `https://github.com/Walter-Hulsebos/Utilities.Singletons.git`
 5. Click on <kbd>Add</kbd>
 

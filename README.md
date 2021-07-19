@@ -1,9 +1,9 @@
-# CGTerminal
+# Utilities.Singletons
 
 ![Version](https://img.shields.io/github/package-json/v/Walter-Hulsebos/Utilities.Singletons?style=for-the-badge)
 ![Stars](https://img.shields.io/github/stars/Walter-Hulsebos/Utilities.Singletons?color=orange&style=for-the-badge)
 [![Discord](https://img.shields.io/discord/763171539763462144?color=%237289DA&label=discord&logo=discord&style=for-the-badge)](https://discord.gg/S9wHQ96)
-[![Build](https://img.shields.io/badge/build-passing-brightgreen.svg?style=for-the-badge)]()
+![Build](https://img.shields.io/badge/build-passing-brightgreen.svg?style=for-the-badge)
 
 Set of easy to use, explicit Singletons.
 <br>Part of the **CGTK** Framework for Unity.
